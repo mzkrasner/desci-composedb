@@ -1,6 +1,6 @@
-# ComposeDB with LIT Protocol
+# ComposeDB for Desci Labs Initial Composites
 
-This is a rough example using LIT Protocol to encrypt and decrypt data based on on-chain condition logic while storing on ComposeDB.
+This is a rough take on organizing model definitions for desci labs
 
 ## Getting Started
 

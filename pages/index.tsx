@@ -145,6 +145,68 @@ const Home: NextPage = () => {
     }
   };
 
+  const createProfile = async () => {
+    setLoading(true);
+    if (ceramic.did !== undefined ) {
+     
+      const query = await composeClient.executeQuery(`
+        mutation {
+          createProfile(input: {
+            content: {
+              displayName: "${val}"
+            }
+          }) 
+          {
+            document {
+              id
+              author{
+                id
+              }
+              displayName
+            }
+          }
+        }
+      `);
+      console.log(query);
+      setRes(JSON.stringify(query))
+      await getProfile();
+      setLoading(false);
+    }
+    setVal("");
+  };
+
+  const createResearchObj = async () => {
+    setLoading(true);
+    if (ceramic.did !== undefined ) {
+     
+      const query = await composeClient.executeQuery(`
+        mutation {
+          createResearchObject(input: {
+            content: {
+              title: "This is a title"
+              manifest: "bafyreicse4sbor33iacv2jzgpd333uxwidlvjp3lt7a2coxbobxdan4d7m"
+              metadata: "this is some dummy text"
+            }
+          }) 
+          {
+            document {
+              id
+              author{
+                id
+              }
+              title
+            }
+          }
+        }
+      `);
+      console.log(query);
+      setRes(JSON.stringify(query))
+      await getProfile();
+      setLoading(false);
+    }
+    setVal("");
+  };
+
   /**
    * On load check if there is a DID-Session in local storage.
    * If there is a DID-Session we can immediately authenticate the user.
@@ -188,9 +250,9 @@ const Home: NextPage = () => {
             </div>
             <div className={styles.form}>
               <div className={styles.formGroup}>
-                <label>Input Message to Encrypt</label>
+                <label>DisplayName</label>
                 <textarea
-                  style={{"height": "10rem", "width": "50rem", "padding": "1rem"}}
+                  style={{"height": "3rem", "width": "20rem", "padding": "1rem"}}
                   value={val}
                   onChange={(e) => {
                     setVal(e.target.value);
@@ -199,17 +261,17 @@ const Home: NextPage = () => {
               </div>
               <button
                 onClick={() => {
-                  createMessage();
+                  createProfile();
                 }}
               >
-                {loading ? "Loading..." : "Create Message"}
+                {loading ? "Loading..." : "Create Profile"}
               </button>
               <button
                 onClick={() => {
-                  decryptMessage();
+                  createResearchObj();
                 }}
               >
-                {loading ? "Loading..." : "Decrypt Message"}
+                {loading ? "Loading..." : "Create Research Obj"}
               </button>
             </div>
           </>
