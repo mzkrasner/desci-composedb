@@ -61,26 +61,26 @@ export const writeComposite = async (spinner) => {
     schema: researchAttestationSchema,
   });
 
-  const profileOfSchema = readFileSync("./composites/05-profileOf.graphql", {
-    encoding: "utf-8",
-  })
-    .replace("$PROFILE_ID", profileComposite.modelIDs[0])
-    .replace("$ORG_ID", orgComposite.modelIDs[0]);
+  // const profileOfSchema = readFileSync("./composites/05-profileOf.graphql", {
+  //   encoding: "utf-8",
+  // })
+  //   .replace("$PROFILE_ID", profileComposite.modelIDs[0])
+  //   .replace("$ORG_ID", orgComposite.modelIDs[0]);
 
-  const profileOfComposite = await Composite.create({
-    ceramic,
-    schema: profileOfSchema,
-  });
+  // const profileOfComposite = await Composite.create({
+  //   ceramic,
+  //   schema: profileOfSchema,
+  // });
 
-  const orgToProfileSchema = readFileSync("./composites/06-OrganizationToProfile.graphql", {
-    encoding: "utf-8",
-  }).replace("$PROFILEOF_ID", profileOfComposite.modelIDs[2])
-    .replace("$ORG_ID", orgComposite.modelIDs[0]);
+  // const orgToProfileSchema = readFileSync("./composites/06-OrganizationToProfile.graphql", {
+  //   encoding: "utf-8",
+  // }).replace("$PROFILEOF_ID", profileOfComposite.modelIDs[2])
+  //   .replace("$ORG_ID", orgComposite.modelIDs[0]);
 
-  const orgToProfileComposite = await Composite.create({
-    ceramic,
-    schema: orgToProfileSchema,
-  });
+  // const orgToProfileComposite = await Composite.create({
+  //   ceramic,
+  //   schema: orgToProfileSchema,
+  // });
 
   const composite = Composite.from([
     profileComposite,
@@ -88,9 +88,9 @@ export const writeComposite = async (spinner) => {
     orgComposite,
     profAttestationComposite,
     researchAttestationComposite,
-    profileOfComposite,
-    orgToProfileComposite
-  ]);
+  //   profileOfComposite,
+  //   orgToProfileComposite
+   ]);
 
   await writeEncodedComposite(composite, "./src/__generated__/definition.json");
   spinner.info("creating composite for runtime usage");

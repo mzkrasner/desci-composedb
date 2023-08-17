@@ -175,37 +175,37 @@ const Home: NextPage = () => {
     setVal("");
   };
 
-  const createResearchObj = async () => {
-    setLoading(true);
-    if (ceramic.did !== undefined ) {
+  // const createResearchObj = async () => {
+  //   setLoading(true);
+  //   if (ceramic.did !== undefined ) {
      
-      const query = await composeClient.executeQuery(`
-        mutation {
-          createResearchObject(input: {
-            content: {
-              title: "This is a title"
-              manifest: "bafyreicse4sbor33iacv2jzgpd333uxwidlvjp3lt7a2coxbobxdan4d7m"
-              metadata: "this is some dummy text"
-            }
-          }) 
-          {
-            document {
-              id
-              author{
-                id
-              }
-              title
-            }
-          }
-        }
-      `);
-      console.log(query);
-      setRes(JSON.stringify(query))
-      await getProfile();
-      setLoading(false);
-    }
-    setVal("");
-  };
+  //     const query = await composeClient.executeQuery(`
+  //       mutation {
+  //         createResearchObject(input: {
+  //           content: {
+  //             title: "This is a title"
+  //             manifest: "bafyreicse4sbor33iacv2jzgpd333uxwidlvjp3lt7a2coxbobxdan4d7m"
+  //             metadata: "this is some dummy text"
+  //           }
+  //         }) 
+  //         {
+  //           document {
+  //             id
+  //             author{
+  //               id
+  //             }
+  //             title
+  //           }
+  //         }
+  //       }
+  //     `);
+  //     console.log(query);
+  //     setRes(JSON.stringify(query))
+  //     await getProfile();
+  //     setLoading(false);
+  //   }
+  //   setVal("");
+  // };
 
   /**
    * On load check if there is a DID-Session in local storage.
@@ -266,13 +266,13 @@ const Home: NextPage = () => {
               >
                 {loading ? "Loading..." : "Create Profile"}
               </button>
-              <button
+              {/* <button
                 onClick={() => {
                   createResearchObj();
                 }}
               >
                 {loading ? "Loading..." : "Create Research Obj"}
-              </button>
+              </button> */}
             </div>
           </>
         )}
