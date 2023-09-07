@@ -1,0 +1,7 @@
+type ResearchObjectAttestation @loadModel(id: "$RESEARCHATTEST_ID") {
+    id: ID!
+}
+
+type ResearchObject @loadModel(id: "$RESEARCH_ID") {
+  attestations: [ResearchObjectAttestation] @relationFrom(model: "ResearchObjectAttestation", property: "targetId")
+}

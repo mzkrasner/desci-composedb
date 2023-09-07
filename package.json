@@ -15,13 +15,14 @@
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.278.0",
+    "@ceramicnetwork/cli": "2.38.0",
+    "@ceramicnetwork/common": "2.33.0",
+    "@ceramicnetwork/http-client": "2.30.0",
+    "@composedb/cli": "0.5.0",
+    "@composedb/client": "0.5.0",
+    "@composedb/devtools": "0.5.0",
+    "@composedb/devtools-node": "0.5.0",
     "@ceramicnetwork/blockchain-utils-linking": "2.11.0",
-    "@ceramicnetwork/cli": "^2.22.0",
-    "@ceramicnetwork/common": "2.20.0",
-    "@ceramicnetwork/http-client": "2.17.0",
-    "@composedb/client": "0.4.0",
-    "@composedb/devtools": "0.4.0",
-    "@composedb/devtools-node": "0.4.0",
     "@didtools/cacao": "2.0.0",
     "@didtools/pkh-ethereum": "0.1.0",
     "@lit-protocol/lit-node-client": "^2.2.47",
@@ -36,6 +37,7 @@
     "react-dom": "^18.0.0"
   },
   "devDependencies": {
+    "@composedb/cli": "^0.5.0",
     "@composedb/types": "^0.3.0",
     "@datamodels/identity-profile-basic": "^0.2.0",
     "@glazed/types": "^0.2.0",
